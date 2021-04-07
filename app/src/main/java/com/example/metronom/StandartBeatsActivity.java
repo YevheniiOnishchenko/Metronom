@@ -10,7 +10,6 @@ import android.widget.Button;
 import android.widget.ImageButton;
 
 public class StandartBeatsActivity extends AppCompatActivity {
-    private static final int PREVIOUS = 0;
     protected ImageButton metronom_activity;
     protected ImageButton tap_activity;
     protected ImageButton template_activity;
@@ -43,7 +42,8 @@ public class StandartBeatsActivity extends AppCompatActivity {
         buttonTemp2_4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                sound.play(PREVIOUS, 2);
+                sound.setTime_signature(2);
+                sound.play();
             }
         });
 
@@ -51,15 +51,16 @@ public class StandartBeatsActivity extends AppCompatActivity {
         buttonTemp3_4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                sound.play(PREVIOUS, 3);
-            }
+                sound.setTime_signature(3);
+                sound.play();            }
         });
 
         buttonTemp4_4 = (Button) findViewById(R.id.buttonTemp4_4);
         buttonTemp4_4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                sound.play(PREVIOUS, 4);
+                sound.setTime_signature(4);
+                sound.play();
             }
         });
                                                                                     //TEMPS
@@ -67,7 +68,8 @@ public class StandartBeatsActivity extends AppCompatActivity {
         buttonTemp50.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                sound.play(1200, PREVIOUS);
+                sound.setTemp(60*1000/50);
+                sound.play();
             }
         });
 
@@ -75,7 +77,8 @@ public class StandartBeatsActivity extends AppCompatActivity {
         buttonTemp55.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                sound.play(1090, PREVIOUS);
+                sound.setTemp(60*1000/55);
+                sound.play();
             }
         });
 
@@ -83,7 +86,8 @@ public class StandartBeatsActivity extends AppCompatActivity {
         buttonTemp60.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                sound.play(1000, PREVIOUS);
+                sound.setTemp(60*1000/60);
+                sound.play();
             }
         });
 
@@ -91,7 +95,8 @@ public class StandartBeatsActivity extends AppCompatActivity {
         buttonTemp65.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                sound.play(923, PREVIOUS);
+                sound.setTemp(60*1000/65);
+                sound.play();
             }
         });
 
@@ -99,7 +104,8 @@ public class StandartBeatsActivity extends AppCompatActivity {
         buttonTemp70.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                sound.play(857, PREVIOUS);
+                sound.setTemp(60*1000/70);
+                sound.play();
             }
         });
 
@@ -107,7 +113,8 @@ public class StandartBeatsActivity extends AppCompatActivity {
         buttonTemp75.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                sound.play(800, PREVIOUS);
+                sound.setTemp(60*1000/75);
+                sound.play();
             }
         });
 
@@ -115,7 +122,8 @@ public class StandartBeatsActivity extends AppCompatActivity {
         buttonTemp80.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                sound.play(750, PREVIOUS);
+                sound.setTemp(60*1000/80);
+                sound.play();
             }
         });
 
@@ -123,7 +131,8 @@ public class StandartBeatsActivity extends AppCompatActivity {
         buttonTemp85.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                sound.play(705, PREVIOUS);
+                sound.setTemp(60*1000/85);
+                sound.play();
             }
         });
 
@@ -131,7 +140,8 @@ public class StandartBeatsActivity extends AppCompatActivity {
         buttonTemp90.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                sound.play(666, PREVIOUS);
+                sound.setTemp(60*1000/90);
+                sound.play();
             }
         });
 
@@ -139,7 +149,8 @@ public class StandartBeatsActivity extends AppCompatActivity {
         buttonTemp95.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                sound.play(631, PREVIOUS);
+                sound.setTemp(60*1000/95);
+                sound.play();
             }
         });
 
@@ -147,7 +158,8 @@ public class StandartBeatsActivity extends AppCompatActivity {
         buttonTemp100.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                sound.play(600, PREVIOUS);
+                sound.setTemp(60*1000/100);
+                sound.play();
             }
         });
 
@@ -155,10 +167,10 @@ public class StandartBeatsActivity extends AppCompatActivity {
         buttonTemp105.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                sound.play(571, PREVIOUS);
+                sound.setTemp(60*1000/105);
+                sound.play();
             }
         });
-
 
                                                                                     //MENU
         metronom_activity = (ImageButton) findViewById(R.id.metronom_activity);

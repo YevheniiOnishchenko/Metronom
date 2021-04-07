@@ -12,15 +12,22 @@ public final class SoundSettings {
     private Timer timer = new Timer();
     private MediaPlayer bum, bum2, bum3;
     private static int count=0;
-    private static int temp;
-    private static int time_signature;
+    private static int temp = 600;
+    private static int time_signature = 4;
 
     private static SoundSettings instance;
 
     private SoundSettings(Context ctx){
         bum = MediaPlayer.create(ctx, R.raw.bum);
-        bum2 = MediaPlayer.create(ctx, R.raw.bum2);
         bum3 = MediaPlayer.create(ctx, R.raw.bum3);
+    }
+
+    public void setTemp(int temp){
+        this.temp = temp;
+    }
+
+    public static void setTime_signature(int time_signature) {
+        SoundSettings.time_signature = time_signature;
     }
 
     public static SoundSettings getInstance(Context ctx){
@@ -37,36 +44,28 @@ public final class SoundSettings {
         }
     }
 
-    public void play(int temp, int time_signature){
-        if(temp == 0){
-            temp = this.temp;
-        }
-
-        if(time_signature == 0){
-            time_signature = this.time_signature;
-        }
+    public void play(){
 
         if(timer!=null){
             timer.cancel();
         }
         timer = new Timer();
 
-        int finalTime_signature = time_signature;
-
         timer.schedule(new TimerTask() {
             @Override
             public void run() {
-                chooseSound(finalTime_signature);
+                chooseSound(time_signature);
                 count++;
                 }
             }, 0, temp);
 
-        this.temp = temp;
-        this.time_signature = time_signature;
     }
     public void pause(){
         timer.cancel();
     }
 
+    public void playSound(){
+        bum.start();
+    }
 
 }

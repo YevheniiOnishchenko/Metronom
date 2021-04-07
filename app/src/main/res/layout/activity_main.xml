@@ -21,6 +21,9 @@
 
     <SeekBar
         android:id="@+id/seekBar"
+        android:min="30"
+        android:max="200"
+        android:progress="90"
         android:layout_width="326dp"
         android:layout_height="67dp"
         android:layout_marginBottom="32dp"
@@ -42,10 +45,13 @@
         app:srcCompat="@drawable/metronom" />
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/textViewTemp"
         android:layout_width="152dp"
         android:layout_height="48dp"
         android:text="@string/textview"
+        android:textColor="@color/white"
+        android:textSize="30sp"
+        android:gravity="center"
         app:layout_constraintBottom_toTopOf="@+id/seekBar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
