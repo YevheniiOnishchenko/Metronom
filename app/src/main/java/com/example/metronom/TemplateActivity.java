@@ -6,19 +6,108 @@ import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageButton;
 
 public class TemplateActivity extends AppCompatActivity {
     protected ImageButton metronom_activity;
     protected ImageButton standart_beats_activity;
     protected ImageButton tap_activity;
-    protected ImageButton template_activity;
+    private Button buttonStandart;
+    private Button buttonDrums;
+    private Button buttonStrings;
+    private Button buttonPercussion;
+    private Button buttonContrabass;
+    private Button buttonBass;
+    private Button buttonBass2;
+    private Button buttonUniversal;
 
     @SuppressLint("WrongViewCast")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.template);
+        SoundSettings sound = SoundSettings.getInstance(getApplicationContext());
+
+        buttonStandart = (Button)findViewById(R.id.buttonStandart);
+        buttonStandart.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                sound.setFirstBeat(1);
+                sound.setSecondBeat(1);
+                sound.play();
+            }
+        });
+
+        buttonDrums = (Button)findViewById(R.id.buttonDrums);
+        buttonDrums.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                sound.setFirstBeat(2);
+                sound.setSecondBeat(2);
+                sound.play();
+            }
+        });
+
+        buttonStrings = (Button)findViewById(R.id.buttonStrings);
+        buttonStrings.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                sound.setFirstBeat(3);
+                sound.setSecondBeat(3);
+                sound.play();
+            }
+        });
+
+        buttonPercussion = (Button)findViewById(R.id.buttonPercussion);
+        buttonPercussion.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                sound.setFirstBeat(4);
+                sound.setSecondBeat(4);
+                sound.play();
+            }
+        });
+
+        buttonContrabass = (Button)findViewById(R.id.buttonContrabass);
+        buttonContrabass.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                sound.setFirstBeat(5);
+                sound.setSecondBeat(5);
+                sound.play();
+            }
+        });
+
+        buttonBass = (Button)findViewById(R.id.buttonBass);
+        buttonBass.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                sound.setFirstBeat(6);
+                sound.setSecondBeat(6);
+                sound.play();
+            }
+        });
+
+        buttonBass2 = (Button)findViewById(R.id.buttonBass2);
+        buttonBass2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                sound.setFirstBeat(7);
+                sound.setSecondBeat(7);
+                sound.play();
+            }
+        });
+
+        buttonUniversal = (Button)findViewById(R.id.buttonUniversal);
+        buttonUniversal.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                sound.setFirstBeat(8);
+                sound.setSecondBeat(8);
+                sound.play();
+            }
+        });
 
         metronom_activity = (ImageButton)findViewById(R.id.metronom_activity);
         metronom_activity.setOnClickListener(new View.OnClickListener() {
@@ -47,13 +136,5 @@ public class TemplateActivity extends AppCompatActivity {
             }
         });
 
-        template_activity = (ImageButton)findViewById(R.id.template_activity);
-        template_activity.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent new_activity = new Intent(TemplateActivity.this, TemplateActivity.class);
-                startActivity(new_activity);
-            }
-        });
     }
 }
