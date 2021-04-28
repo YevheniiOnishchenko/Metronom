@@ -21,12 +21,12 @@
 
     <SeekBar
         android:id="@+id/seekBar"
-        android:min="30"
-        android:max="200"
-        android:progress="90"
         android:layout_width="326dp"
         android:layout_height="67dp"
-        android:layout_marginBottom="32dp"
+        android:layout_marginBottom="20dp"
+        android:max="200"
+        android:min="30"
+        android:progress="90"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.494"
@@ -39,22 +39,22 @@
         android:contentDescription="TODO"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.506"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.727"
+        app:layout_constraintVertical_bias="0.732"
         app:srcCompat="@drawable/metronome" />
 
     <TextView
         android:id="@+id/textViewTemp"
         android:layout_width="152dp"
         android:layout_height="48dp"
-        android:text="@string/textview"
-        android:textColor="@color/white"
-        android:textSize="30sp"
         android:gravity="center"
+        android:text="@string/textview"
+        android:textColor="@color/yellow"
+        android:textSize="30sp"
         app:layout_constraintBottom_toTopOf="@+id/seekBar"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
@@ -63,7 +63,7 @@
         android:layout_height="86dp"
         android:gravity="center"
         android:text="@string/metronome"
-        android:textColor="@color/white"
+        android:textColor="@color/yellow"
         android:textSize="50sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -150,5 +150,19 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.275" />
+
+    <ImageView
+        android:id="@+id/imageViewArrow"
+        android:layout_width="53dp"
+        android:layout_height="180dp"
+        android:layout_marginTop="92dp"
+        app:layout_constraintBottom_toTopOf="@+id/seekBar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.511"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/imageView6"
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@drawable/arrow" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

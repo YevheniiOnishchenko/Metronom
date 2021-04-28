@@ -28,9 +28,14 @@ public final class SoundSettings {
         this.temp = temp;
     }
 
+    public static int getTemp() {
+        return temp;
+    }
+
     public static void setTime_signature(int time_signature) {
         SoundSettings.time_signature = time_signature;
     }
+
 
     public static SoundSettings getInstance(Context ctx){
         if (null == instance){
@@ -95,5 +100,4 @@ public final class SoundSettings {
     public void playSound(){
         firstBeat.start();
     }
-
 }

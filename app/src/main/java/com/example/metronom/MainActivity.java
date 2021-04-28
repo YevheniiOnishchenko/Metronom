@@ -4,19 +4,19 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
-import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.LinearInterpolator;
+import android.view.animation.RotateAnimation;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
-import java.util.Timer;
-import java.util.TimerTask;
 
 public class MainActivity extends AppCompatActivity {
     private final static int DEFAULT_TEMP = 600;
-    private final static int DEFAULT_TIME_SIGNATURE = 4;
     protected ImageButton standart_beats_activity;
     protected ImageButton tap_activity;
     protected ImageButton template_activity;
@@ -24,6 +24,10 @@ public class MainActivity extends AppCompatActivity {
     protected ImageButton buttonPause;
     protected SeekBar seekBar;
     protected TextView textViewTemp;
+    protected ImageView imageViewArrow;
+    SoundSettings sound;
+    RotateArrow animation;
+    UI ui;
 
     @SuppressLint("WrongViewCast")
     @Override
@@ -31,13 +35,20 @@ public class MainActivity extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        SoundSettings sound = SoundSettings.getInstance(getApplicationContext());
+        sound = SoundSettings.getInstance(getApplicationContext());
+        animation = new RotateArrow(-40, 40, 50, 500);
+
+        animation.animationSettings();
+        animation.setTemp();
+
+        imageViewArrow = (ImageView)findViewById(R.id.imageViewArrow);
 
         buttonPlay = (ImageButton)findViewById(R.id.buttonPlay);
         buttonPlay.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 sound.play();
+                imageViewArrow.startAnimation(animation);
             }
         });
 
@@ -46,11 +57,12 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 sound.pause();
+                imageViewArrow.clearAnimation();
             }
         });
 
         textViewTemp = (TextView)findViewById(R.id.textViewTemp);
-        textViewTemp.setText(String.valueOf(DEFAULT_TEMP));
+        textViewTemp.setText(String.valueOf(60*1000/DEFAULT_TEMP));
 
         seekBar = (SeekBar) findViewById(R.id.seekBar);
         seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
@@ -59,7 +71,7 @@ public class MainActivity extends AppCompatActivity {
                 int temp = 60*1000/progress;
                 sound.setTemp(temp);
                 textViewTemp.setText(String.valueOf(progress));
-
+                animation.setTemp();
             }
 
             @Override
