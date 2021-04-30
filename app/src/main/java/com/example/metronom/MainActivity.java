@@ -1,14 +1,12 @@
 package com.example.metronom;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.LinearInterpolator;
-import android.view.animation.RotateAnimation;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.SeekBar;
@@ -29,26 +27,23 @@ public class MainActivity extends AppCompatActivity {
     RotateArrow animation;
     UI ui;
 
-    @SuppressLint("WrongViewCast")
+    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         sound = SoundSettings.getInstance(getApplicationContext());
-        animation = new RotateArrow(-40, 40, 50, 500);
-
-        animation.animationSettings();
-        animation.setTemp();
 
         imageViewArrow = (ImageView)findViewById(R.id.imageViewArrow);
+        animation = new RotateArrow(imageViewArrow,-40, 40);
 
         buttonPlay = (ImageButton)findViewById(R.id.buttonPlay);
         buttonPlay.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 sound.play();
-                imageViewArrow.startAnimation(animation);
+                animation.resume();
             }
         });
 
@@ -57,7 +52,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 sound.pause();
-                imageViewArrow.clearAnimation();
+                animation.pause();
             }
         });
 
