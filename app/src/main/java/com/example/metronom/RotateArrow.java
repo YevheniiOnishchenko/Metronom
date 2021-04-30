@@ -1,22 +1,38 @@
 package com.example.metronom;
 
+import android.animation.ObjectAnimator;
+import android.animation.ValueAnimator;
 import android.content.Context;
+import android.os.Build;
+import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.LinearInterpolator;
 import android.view.animation.RotateAnimation;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 
-public class RotateArrow extends RotateAnimation {
+public class RotateArrow {
 
-    public RotateArrow(float fromDegrees, float toDegrees, float pivotX, float pivotY) {
-        super(fromDegrees, toDegrees, pivotX, pivotY);
+    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
+    public RotateArrow(View animateTarget, float fromDegrees, float toDegrees) {
+        animator = ObjectAnimator.ofFloat(animateTarget, "rotation",
+                fromDegrees, toDegrees);
+
+        animator.setDuration(getTempSound());
+        animator.setRepeatCount(animator.INFINITE);
+        animator.setRepeatMode(animator.REVERSE);
+
+        setTemp();
+
+        animator.start();
+        pause();
     }
 
 
     public void setTemp(){
-        this.setDuration(getTempSound());
+        animator.setDuration(getTempSound());
     }
 
     public int getTempSound(){
@@ -25,10 +41,15 @@ public class RotateArrow extends RotateAnimation {
         return temp;
     }
 
-    public void animationSettings(){
-        this.setRepeatMode(Animation.REVERSE);
-        this.setRepeatCount(Animation.INFINITE);
-        this.setInterpolator(new LinearInterpolator());
+    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
+    public void pause() {
+        animator.pause();
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
+    public void resume() {
+        animator.resume();
+    }
+
+    private ObjectAnimator animator;
 }
