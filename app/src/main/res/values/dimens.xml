@@ -1,3 +1,5 @@
 <resources>
     <dimen name="fab_margin">16dp</dimen>
+    <dimen name="main_activity_arrow_pivot_x">50.0px</dimen>
+    <dimen name="main_activity_arrow_pivot_y">500.0px</dimen>
 </resources>

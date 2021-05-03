@@ -156,6 +156,8 @@
         android:layout_width="53dp"
         android:layout_height="180dp"
         android:layout_marginTop="92dp"
+        android:transformPivotX="@dimen/main_activity_arrow_pivot_x"
+        android:transformPivotY="@dimen/main_activity_arrow_pivot_y"
         app:layout_constraintBottom_toTopOf="@+id/seekBar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.511"
