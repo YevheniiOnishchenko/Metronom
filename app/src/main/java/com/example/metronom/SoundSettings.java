@@ -13,6 +13,7 @@ public final class SoundSettings {
     private static int count=0;
     private static int temp = 600;
     private static int time_signature = 4;
+    private boolean state;
     private MediaPlayer firstBeat, secondBeat;
 
     private static SoundSettings instance;
@@ -78,6 +79,26 @@ public final class SoundSettings {
     }
 
     public void play(){
+        state = true;
+        playByStateValue();
+    }
+    public void pause(){
+        state = false;
+        pauseWithoutStateChange();
+    }
+
+    public void playSound(){
+        firstBeat.start();
+    }
+
+    public void pauseWithoutStateChange(){
+        timer.cancel();
+    }
+
+    public void playByStateValue(){
+        if(state == false) {
+            return;
+        }
 
         if(timer!=null){
             timer.cancel();
@@ -89,15 +110,18 @@ public final class SoundSettings {
             public void run() {
                 chooseSound(time_signature);
                 count++;
-                }
-            }, 0, temp);
-
-    }
-    public void pause(){
-        timer.cancel();
+            }
+        }, 0, temp);
     }
 
-    public void playSound(){
-        firstBeat.start();
+    @Override
+    public String toString() {
+        return "SoundSettings{" +
+                "timer=" + timer +
+                ", state=" + state +
+                ", firstBeat=" + firstBeat +
+                ", secondBeat=" + secondBeat +
+                ", ctx=" + ctx +
+                '}';
     }
 }

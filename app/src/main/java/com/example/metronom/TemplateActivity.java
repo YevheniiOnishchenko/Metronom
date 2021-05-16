@@ -1,10 +1,12 @@
 package com.example.metronom;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -22,14 +24,15 @@ public class TemplateActivity extends AppCompatActivity {
     private Button buttonBass;
     private Button buttonBass2;
     private Button buttonUniversal;
+    private SoundSettings sound = null;
 
     @SuppressLint("WrongViewCast")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.template);
-        SoundSettings sound = SoundSettings.getInstance(getApplicationContext());
 
+        sound =  SoundSettings.getInstance(getApplicationContext());
         buttonStandart = (Button)findViewById(R.id.buttonStandart);
         buttonStandart.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -37,6 +40,7 @@ public class TemplateActivity extends AppCompatActivity {
                 sound.setFirstBeat(1);
                 sound.setSecondBeat(1);
                 sound.play();
+
             }
         });
 
@@ -137,5 +141,19 @@ public class TemplateActivity extends AppCompatActivity {
             }
         });
 
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
+    @Override
+    protected void onStop(){
+        super.onStop();
+        sound.pauseWithoutStateChange();
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
+    @Override
+    protected void onResume() {
+        super.onResume();
+        sound.playByStateValue();
     }
 }

@@ -1,18 +1,23 @@
 package com.example.metronom;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 
 public class StandartBeatsActivity extends AppCompatActivity {
+    private static final String TAG = "StandartBeatsActivity";
     protected ImageButton metronom_activity;
     protected ImageButton tap_activity;
     protected ImageButton template_activity;
+    SoundSettings sound;
     protected Button buttonTemp2_4;
     protected Button buttonTemp3_4;
     protected Button buttonTemp4_4;
@@ -34,7 +39,7 @@ public class StandartBeatsActivity extends AppCompatActivity {
     @SuppressLint("WrongViewCast")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        SoundSettings sound = SoundSettings.getInstance(getApplicationContext());
+        sound = SoundSettings.getInstance(getApplicationContext());
         super.onCreate(savedInstanceState);
         setContentView(R.layout.standart_beats);
                                                                                     //TIME SIGNATURE
@@ -199,5 +204,19 @@ public class StandartBeatsActivity extends AppCompatActivity {
                 startActivity(new_activity);
             }
         });
+    }
+    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
+    @Override
+    protected void onStop(){
+        super.onStop();
+        sound.pauseWithoutStateChange();
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
+    @Override
+    protected void onResume() {
+        super.onResume();
+        sound.playByStateValue();
+        Log.d(TAG, "onResume: " + sound);
     }
 }

@@ -78,8 +78,10 @@
         android:layout_width="231dp"
         android:layout_height="78dp"
         android:layout_marginTop="24dp"
-        android:text="TextView"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:gravity="center"
+        android:text="Choose beat"
+        android:textColor="@color/yellow"
+        android:textSize="30sp"        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageViewMenu" />
 
@@ -95,25 +97,25 @@
             android:id="@+id/buttonStandart"
             android:layout_width="match_parent"
             android:layout_height="80dp"
-            android:text="Button" />
+            android:text="casual" />
 
         <Button
             android:id="@+id/buttonDrums"
             android:layout_width="match_parent"
             android:layout_height="80dp"
-            android:text="Button" />
+            android:text="rock" />
 
         <Button
             android:id="@+id/buttonStrings"
             android:layout_width="match_parent"
             android:layout_height="80dp"
-            android:text="Button" />
+            android:text="pop" />
 
         <Button
             android:id="@+id/buttonPercussion"
             android:layout_width="match_parent"
             android:layout_height="80dp"
-            android:text="Button" />
+            android:text="jazz" />
     </LinearLayout>
 
     <LinearLayout
@@ -128,25 +130,25 @@
             android:id="@+id/buttonContrabass"
             android:layout_width="match_parent"
             android:layout_height="80dp"
-            android:text="Button" />
+            android:text="drums" />
 
         <Button
             android:id="@+id/buttonBass"
             android:layout_width="match_parent"
             android:layout_height="80dp"
-            android:text="Button" />
+            android:text="bass" />
 
         <Button
             android:id="@+id/buttonBass2"
             android:layout_width="match_parent"
             android:layout_height="80dp"
-            android:text="Button" />
+            android:text="universal" />
 
         <Button
             android:id="@+id/buttonUniversal"
             android:layout_width="match_parent"
             android:layout_height="80dp"
-            android:text="Button" />
+            android:text="strings" />
     </LinearLayout>
 
     <Button

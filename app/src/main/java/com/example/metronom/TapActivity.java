@@ -1,10 +1,13 @@
 package com.example.metronom;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -17,6 +20,7 @@ public class TapActivity extends AppCompatActivity {
     protected ImageButton metronom_activity;
     protected ImageButton standart_beats_activity;
     protected ImageButton template_activity;
+    SoundSettings sound;
     protected Button buttonTap;
     protected TextView textViewLast;
     protected TextView textViewAvarage;
@@ -33,7 +37,7 @@ public class TapActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.tap);
-        SoundSettings sound = SoundSettings.getInstance(getApplicationContext());
+        sound = SoundSettings.getInstance(getApplicationContext());
 
         textViewLast = (TextView)findViewById(R.id.textViewLast);
         textViewAvarage = (TextView)findViewById(R.id.textViewAvarage);
@@ -118,5 +122,19 @@ public class TapActivity extends AppCompatActivity {
                 startActivity(new_activity);
             }
         });
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
+    @Override
+    protected void onStop(){
+        super.onStop();
+        sound.pauseWithoutStateChange();
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
+    @Override
+    protected void onResume() {
+        super.onResume();
+        sound.playByStateValue();
     }
 }

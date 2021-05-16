@@ -86,21 +86,21 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Button" />
+            android:text="2/4" />
 
         <Button
             android:id="@+id/buttonTemp3_4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Button" />
+            android:text="3/4" />
 
         <Button
             android:id="@+id/buttonTemp4_4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Button" />
+            android:text="4/4" />
     </LinearLayout>
 
     <LinearLayout
@@ -220,9 +220,12 @@
 
     <TextView
         android:id="@+id/textView4"
-        android:layout_width="187dp"
-        android:layout_height="39dp"
+        android:layout_width="330dp"
+        android:layout_height="41dp"
         android:text="CHOOSE TIME SIGNATURE"
+        android:gravity="center"
+        android:textColor="@color/yellow"
+        android:textSize="25sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
@@ -232,9 +235,12 @@
 
     <TextView
         android:id="@+id/textView5"
-        android:layout_width="187dp"
-        android:layout_height="39dp"
+        android:layout_width="327dp"
+        android:layout_height="44dp"
         android:text="CHOOSE TEMP"
+        android:textColor="@color/yellow"
+        android:textSize="25sp"
+        android:gravity="center"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

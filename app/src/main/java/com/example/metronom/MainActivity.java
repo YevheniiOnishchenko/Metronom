@@ -25,7 +25,6 @@ public class MainActivity extends AppCompatActivity {
     protected ImageView imageViewArrow;
     SoundSettings sound;
     RotateArrow animation;
-    UI ui;
 
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     @Override
@@ -110,10 +109,21 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
+    @Override
+    protected void onPause(){
+        super.onPause();
+        sound.pauseWithoutStateChange();
+        animation.pause();
+    }
 
-
-
-
+    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
+    @Override
+    protected void onResume() {
+        super.onResume();
+        sound.playByStateValue();
+        animation.resume();
+    }
 }
 
 
